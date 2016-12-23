@@ -31,7 +31,7 @@ def init():
     dirs["console"] = os.getcwd()
     dirs["src"] = os.path.dirname(__file__)
     dirs["config"] = os.path.join(dirs["src"], "config.json")
-    dirs["project"] = os.path.abspath(os.path.join(dirs["src"], os.path.pardir))
+    dirs["project"] = dirs["src"]
     dirs["res"] = os.path.join(dirs["project"], "res")
     dirs["app_icon"] = os.path.join(dirs["res"], "app_icon.png")
     dirs["tray_icon"] = os.path.join(dirs["res"], "tray_icon.png")
@@ -56,7 +56,7 @@ def set_default_conf():
 
 
 def save_conf():
-    json.dump(conf, open('config.json', 'w'))
+    json.dump(conf, open(dirs["config"], 'w'))
 
 
 def encrypt(value, k=KEY1):

@@ -9,7 +9,7 @@ class Debugger(object):
         if self.is_active:
             print(message)
 
-    def print_error(self, title, function, possible_reason):
+    def print_error(self, title, function="unknown", possible_reason="unknown"):
         if self.is_active:
             print("[!]"                + title)
             print("Function        : " + function)

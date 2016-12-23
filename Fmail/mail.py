@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import socket, imaplib, smtplib
+import imaplib
+import smtplib
+import socket
+
 from debug import Debugger
 
 

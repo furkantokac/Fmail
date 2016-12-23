@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import view, mail, sys, os
-from config import *
-from PyQt5.QtWidgets import QMainWindow, QApplication
+import sys
+
+import view, mail
 from PyQt5.QtCore import QThread, pyqtSignal, QTimer
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
+from config import *
 
 class Fmail(QMainWindow):
     def __init__(self):
@@ -42,15 +43,16 @@ class Fmail(QMainWindow):
 
     def handle_new_mail(self, new_mail):
         if self.num_of_unseen == -1:
-            os.system( 'notify-send -i ~/app-icon.png "Unseen Mail" "You have '+ str(new_mail) +' unseen mail."' )
+            os.system('notify-send -i ~/app_icon.png "Unseen Mail" "You have ' + str(new_mail) + ' unseen mail."')
             self.num_of_unseen = new_mail
         elif self.num_of_unseen < new_mail:
-            os.system('notify-send -i ~/app-icon.png "New Mail !" "You have new mail !"')
+            os.system('notify-send -i ~/app_icon.png "New Mail !" "You have new mail !"')
             self.num_of_unseen = new_mail
 
         self.ui.statusBar.showMessage("You have " + str(new_mail) + " unseen messages", 2000)
 
     "Developer & Contact" "furkan.tokac@metu.edu.tr\nfurkantokac.blogspot.com"
+
     def handle_automail(self, state):
         if state:
             self.automail_timer.start(self.automail_freq)
